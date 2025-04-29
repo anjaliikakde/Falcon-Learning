@@ -6,13 +6,12 @@
 - [REST API Concepts](#rest-api-concepts)
 - [Running a Falcon Server](#running-a-falcon-server)
 - [HTTP Methods in Falcon](#http-methods-in-falcon)
-- [Testing Falcon Routes](#testing-falcon-routes)
+- [Falcon Routes](#testing-falcon-routes)
   - [Using Postman](#using-postman)
   - [Using Curl](#using-curl)
-- [Handling Routes in Falcon](#handling-routes-in-falcon)
-- [Handling Different Data Formats](#handling-different-data-formats)
-- [CRUD Operations with SQLite](#crud-operations-with-sqlite)
-- [Testing with Pytest](#testing-with-pytest)
+- [Handling Different Data Formats using Falcon ](#handling-different-data-formats)
+- [CRUD Operations with SQLite in Falcon](#crud-operations-with-sqlite)
+- [Testing APIs with Pytest](#testing-with-pytest)
 - [Final Mini Project](#final-mini-project)
 
 
@@ -74,7 +73,7 @@ In Command Prompt, go to your app folder and run:
 waitress-serve --port=8000 app:app
 
 ```
-✅ Now the server will start on:
+✨ Now the server will start on:
 ```
 http://127.0.0.1:8000/hello
 
@@ -149,3 +148,89 @@ Standard method nmaes are given below :
 | **OPTIONS**     | `on_options(self, req, resp)`  | Handle OPTIONS requests (describe allowed methods)   |
 | **HEAD**        | `on_head(self, req, resp)`     | Handle HEAD requests (retrieve headers only)         |
 | **TRACE**       | `on_trace(self, req, resp)`    | Handle TRACE requests (debugging tool)               |
+
+
+# [Falcon Routes](#testing-falcon-routes)
+
+In Falcon, a route refers to a specific URL pattern that is mapped to a resource (class or function) that handles requests for that URL. When a client (like a browser, Postman, or cURL) sends an HTTP request to a specific URL (or path), Falcon determines which route matches that URL and invokes the corresponding resource to handle the request.
+You can see it in the code, this urls gives us diffrent responses based on change in urls, make sure to use correct url for your http requests.
+
+
+**Postman** is a popular API testing tool that allows developers and testers to easily send HTTP requests, analyze responses, and automate API testing. It is widely used to test RESTful APIs (and other types of APIs), inspect their behavior, and debug the API responses during the development process. Learn about postman: <br>
+
+[![Postman Docs](https://img.shields.io/badge/Postman-Learn%20More-orange?logo=postman)](https://learning.postman.com/docs/introduction/overview/) 
+
+**cURL** (short for "Client URL") is a command-line tool and library used to transfer data over a network. It allows you to send and receive data between your computer and a server using various internet protocols like HTTP, HTTPS, FTP, and more.
+
+ [![Test cURL Online](https://img.shields.io/badge/ReqBin-Test%20cURL%20Online-blue?logo=curl)](https://reqbin.com/curl) 
+   &nbsp; [![Test cURL Online](https://img.shields.io/badge/Test%20cURL%20Online-ReqBin-brightgreen?logo=curl)](https://reqbin.com/curl)
+
+#  [Handling Different Data Formats using Falcon](#handling-different-data-formats)
+
+In Falcon we can handle diffrent data formats, which are given below :
+
+- JSON
+- Form data 
+- Headers
+- Query parameter
+- Row body
+- Files 
+
+
+## JSON
+Falcon automatically parses incoming JSON data if the Content-Type is set to application/json. You can access the parsed data using req.media.
+
+## Form Data
+
+URL-encoded Form Data (application/x-www-form-urlencoded):
+Falcon can automatically parse URL-encoded form data if the auto_parse_form_urlencoded option is enabled. You can access the parsed parameters using req.params.
+
+### Multipart Form Data (multipart/form-data):
+Falcon supports handling multipart form data, which is commonly used for file uploads. You can access the files using req.files.
+
+## Headers
+You can access HTTP headers using methods like req.get_header(name) or req.headers. Falcon provides convenient attributes for common headers, such as req.content_type and req.accept.
+
+## Query Parameters
+Query parameters are accessible via req.params. Falcon automatically parses the query string and makes the parameters available.
+
+## Raw Body
+You can access the raw request body using req.stream.read(). This is useful when dealing with non-standard content types or when you need to handle the body manually.
+
+## Files
+Falcon supports handling file uploads through multipart form data. Files can be accessed via req.files, which provides a dictionary-like object containing the uploaded files.
+
+Implementation of this section you will found in `2.Data_handling folder`.
+
+#  [CRUD Operations with SQLite in Falcon](#crud-operations-with-sqlite)
+
+CRUD stands for Create, Read, Update, Delete, which are the four basic operations you can perform on database records. In the context of Falcon + SQLite, this means building RESTful APIs that interact with an SQLite database to:
+
+## CRUD Operations mapping
+
+| **Operation** | **HTTP Method** | **Purpose**                                   |
+|---------------|------------------|-----------------------------------------------|
+| **Create**    | `POST`           | Add a new record to the database              |
+| **Read**      | `GET`            | Retrieve existing records                     |
+| **Update**    | `PUT` / `PATCH`  | Modify existing records                       |
+| **Delete**    | `DELETE`         | Remove records from the database              |
+
+These methods handle the logic for interacting with your SQLite database using standard SQL queries like `INSERT`, `SELECT`, `UPDATE`, and `DELETE`.
+
+Implementation of this part is in `3.CRUD` folder.
+
+> Falcon is ideal for building high-performance microservices where you can keep the code clean, testable, and close to the metal.
+
+# [Testing APIs with Pytest](#testing-with-pytest)
+
+pytest is a no-boilerplate testing framework that supports simple assert statements for writing tests, automatic test discovery, fixtures for setup/teardown, and rich plugin support for scaling complex test suites. 
+
+[![Pytest Documentation 📘](https://img.shields.io/badge/Pytest-Documentation-blue)](https://docs.pytest.org/en/stable/)
+
+In simpler terms, pytest is a tool used to test if your Python code works correctly.
+It helps you write small test functions that check whether your code gives the expected output.
+
+**In Falcon**, pytest is commonly used for testing the API endpoints and verifying that the routes, request handling, and responses work as expected. Since Falcon is a lightweight web framework, using pytest helps ensure that your Falcon app functions correctly and handles HTTP requests and responses properly.
+
+
+
