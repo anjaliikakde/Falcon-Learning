@@ -228,9 +228,17 @@ pytest is a no-boilerplate testing framework that supports simple assert stateme
 [![Pytest Documentation 📘](https://img.shields.io/badge/Pytest-Documentation-blue)](https://docs.pytest.org/en/stable/)
 
 In simpler terms, pytest is a tool used to test if your Python code works correctly.
-It helps you write small test functions that check whether your code gives the expected output.
+It helps you write test functions that check whether your code gives the expected output.
 
 **In Falcon**, pytest is commonly used for testing the API endpoints and verifying that the routes, request handling, and responses work as expected. Since Falcon is a lightweight web framework, using pytest helps ensure that your Falcon app functions correctly and handles HTTP requests and responses properly.
 
+# [Final Mini Project](#final-mini-project)
+This final mini project is a Blog Post App developed using Streamlit for the frontend. To run the application, use the following command in your terminal:
 
+```
+streamlit run streamlit_app.py
+```
+Make sure you are in right directory.
+ 
+The Blog Post App is a simple yet effective web application designed using Streamlit, which allows users to create, view, and manage blog posts in a clean and interactive interface. This app serves as a platform where users can write blog entries using a text input area, and instantly see their posts displayed on the same page. 
 
