@@ -18,7 +18,7 @@
 # [Falcon](#about-falcon)
 Falcon is a high-performance, minimalist Python web framework designed for building fast, scalable REST APIs and microservices, giving developers full control over request handling, routing, and responses with minimal overhead.
 
-# [API](#understanding-api)
+# [Understanding API](#understanding-api)
 API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate with each other. It defines the methods and data formats that applications use to request and exchange information.
 
 
@@ -241,4 +241,4 @@ streamlit run streamlit_app.py
 Make sure you are in right directory.
  
 The Blog Post App is a simple yet effective web application designed using Streamlit, which allows users to create, view, and manage blog posts in a clean and interactive interface. This app serves as a platform where users can write blog entries using a text input area, and instantly see their posts displayed on the same page. 
-
+# [Streamlit app url](https://falcon-learning-si7yvfwjiyawjk5pjwtrat.streamlit.app/)
